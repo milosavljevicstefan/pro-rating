@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Review</title>
+    <!-- CSS file here -->
+    <style>
+        /*  CSS styles  */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="business-image" src="" alt="Restaurant Image">
+        <p id="thank-you-message">Hvala Vam na Poseti! Upišite svoj mejl i osvojite nagradu. Molimo Vas da nas ocenite i doprinesete da zajedno rastemo.</p>
+        <input type="email" id="email-input" placeholder="Enter your email">
+        <div class="ratings">
+            <button class="bad">Bad</button>
+            <button class="okay">Okay</button>
+            <button class="great">Great</button>
+        </div>
+    </div>
+
+    <script>
+
+        var businessData = {
+            "BusinessName1": {
+                "ownerEmail": "owner1@example.com",
+                "googleLink": "https://www.google.com/maps/place/BusinessName1"
+            },
+            "BusinessName2": {
+                "ownerEmail": "owner2@example.com",
+                "googleLink": "https://www.google.com/maps/place/BusinessName2"
+            },
+            "CaribicTrgCariceMilice": {
+                "ownerEmail": "stefan.milosavljevic01@gmail.com",
+                "googleLink": "https://www.google.com/search?q=caribic+picerija+trg+carice+milice&oq=caribic+pic&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyBggCEEUYOzIGCAMQLhhA0gEJMTI1NDNqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x475b106b3a3fffff:0x8a446e43c230a3bd,3,,,,"
+            },
+            "laVia": {
+                "ownerEmail": "stefan.milosavljevic01@gmail.com",
+                "googleLink": "https://search.google.com/local/writereview?placeid=ChIJVVWpOv13nkcRvznAZhIFnHY"
+            }
+        };
+
+        window.onload = function() {
+            function getUrlParams() {
+                var params = {};
+                var url = window.location.href;
+                var queryString = url.split('?')[1];
+                if (queryString) {
+                    var keyValuePairs = queryString.split('&');
+                    for (var i = 0; i < keyValuePairs.length; i++) {
+                        var keyValue = keyValuePairs[i].split('=');
+                        params[keyValue[0]] = decodeURIComponent(keyValue[1]);
+                    }
+                }
+                return params;
+            }
+            var urlParams = getUrlParams();
+            var businessName = urlParams.business;
+            var tableNumber = urlParams.table;
+
+            if (businessName && businessData.hasOwnProperty(businessName)) {
+                var ownerEmail = businessData[businessName].ownerEmail;
+                var googleLink = businessData[businessName].googleLink;
+
+                document.getElementById('business-image').src = 'images/' + businessName + '.png';
+
+                console.log("Owner Email:", ownerEmail);
+                console.log("Google Link:", googleLink);
+
+                document.querySelector('.great').addEventListener('click', function() {
+                    window.location.href = googleLink;
+                });
+                document.querySelector('.bad').addEventListener('click', function() {
+                    redirectToFeedbackPage(businessName, tableNumber);
+                });
+                document.querySelector('.okay').addEventListener('click', function() {
+                    redirectToFeedbackPage(businessName, tableNumber);
+                });
+
+                function redirectToFeedbackPage(businessName, tableNumber) {
+                    var email = encodeURIComponent(document.getElementById('email-input').value);
+                    var feedbackPageUrl = "feedback.html?business=" + encodeURIComponent(businessName) + "&table=" + encodeURIComponent(tableNumber) + "&email=" + email;
+                    window.location.href = feedbackPageUrl;
+                }
+            }
+        };
+    </script>
+</body>
+</html>

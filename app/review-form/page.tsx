@@ -1,9 +1,8 @@
 'use client'
+//app/review-form/page.tsx
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { businessDetails } from '../data/businesses';
 
 interface Translation {
@@ -68,7 +67,7 @@ const SubmitReview = () => {
 
   const translations = languageTranslations[details.language];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here (e.g., send data to an API)
     console.log('Message:', message);

@@ -16,12 +16,15 @@ export async function sendMail({
   const { SMTP_EMAIL, SMTP_PASSWORD } = process.env;
 
   const transport = nodemailer.createTransport({
-    service: "gmail",
+    host: "mail.pro-rating.co",  // Your cPanel SMTP server
+    port: 465,  // Port for SSL/TLS
+    secure: true,  // Use SSL/TLS
     auth: {
-      user: SMTP_EMAIL,
-      pass: SMTP_PASSWORD,
+      user: "pro-rating@pro-rating.co",  // Your cPanel email username
+      pass: SMTP_PASSWORD,  // Your cPanel email password
     },
   });
+
   try {
     const testResult = await transport.verify();
     console.log(testResult);
@@ -32,7 +35,7 @@ export async function sendMail({
 
   try {
     const sendResult = await transport.sendMail({
-      from: SMTP_EMAIL,
+      from: "pro-rating@pro-rating.co",  // Your cPanel email
       to,
       subject,
       html: body,

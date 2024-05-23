@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { businessDetails } from '../data/businesses';
+import { businessDetails } from '../../data/businesses';
+import { sendReviewMail } from '@/server/mailServerActions';
 
 interface Translation {
   yourOpinion?: string;
@@ -67,16 +68,14 @@ const SubmitReview = () => {
 
   const translations = languageTranslations[details.language];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send data to an API)
-    console.log('Message:', message);
-    console.log('Business Name:', businessName);
-    console.log('Table Number:', searchParams);
+    await sendReviewMail(details.ownerEmail, businessName || '', message, table || '')
+    alert("Email send succesful")
   };
 
   return (
-    <div className="flex flex-col items-center p-6 w-full h-screen max-w-md mx-auto text-center">
+    <div className="flex flex-col items-center p-6 w-full h-screen max-w-md mx-auto text-center font-poppins">
       <p className="mb-6 text-lg font-semibold">{translations?.yourOpinion}</p>
       <p className="mb-6">{translations?.thankYou}</p>
       <p className="mb-6">{translations?.keyToService}</p>

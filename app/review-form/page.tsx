@@ -27,9 +27,9 @@ const ReviewFormContent = () => {
     image: '',
     ownerEmail: '',
     googleLink: '',
-    language: '',
-    primaryColor: '',
-    secondaryColor: ''
+    languages: ['en'],
+    backgroundColor: '',
+    textColor: ''
   });
 
   useEffect(() => {
@@ -39,9 +39,9 @@ const ReviewFormContent = () => {
         image: '/default-image.png',
         ownerEmail: 'default@example.com',
         googleLink: 'https://maps.google.com',
-        language: 'en',
-        primaryColor: '#000000',
-        secondaryColor: '#FFFFFF'
+        languages: ['en'],
+        backgroundColor: '#000000',
+        textColor: '#FFFFFF'
       };
       setDetails(businessInfo);
     }
@@ -66,19 +66,41 @@ const ReviewFormContent = () => {
     // Add more translations as needed
   };
 
-  const translations = languageTranslations[details.language];
-
-  const handleSubmit = async(e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await sendReviewMail(details.ownerEmail, businessName || '', message, table || '')
-    alert("Email send succesful")
+    alert("Email sent successfully")
   };
 
   return (
     <div className="flex flex-col items-center p-6 w-full h-screen max-w-md mx-auto text-center font-poppins">
-      <p className="mb-6 text-lg font-semibold">{translations?.yourOpinion}</p>
-      <p className="mb-6">{translations?.thankYou}</p>
-      <p className="mb-6">{translations?.keyToService}</p>
+      {details.languages.map((lang) => {
+        const translations = languageTranslations[lang];
+        return translations ? (
+          <React.Fragment key={lang}>
+            <p className="text-lg font-semibold">{translations.yourOpinion}</p>
+          </React.Fragment>
+        ) : null;
+      })}
+      <div className='mb-4'></div>
+      {details.languages.map((lang) => {
+        const translations = languageTranslations[lang];
+        return translations ? (
+          <React.Fragment key={lang}>
+            <p>{translations.thankYou}</p>
+          </React.Fragment>
+        ) : null;
+      })}
+      <div className='mb-4'></div>
+      {details.languages.map((lang) => {
+        const translations = languageTranslations[lang];
+        return translations ? (
+          <React.Fragment key={lang}>
+            <p>{translations.keyToService}</p>
+          </React.Fragment>
+        ) : null;
+      })}
+      <div className='mb-4'></div>
       <form onSubmit={handleSubmit} className="w-full flex flex-col flex-grow">
         <textarea
           value={message}
@@ -86,7 +108,6 @@ const ReviewFormContent = () => {
           placeholder="Enter your review"
           className="flex-grow w-full p-3 mb-4 border rounded-xl"
         />
-        
         <button type="submit" className="w-full p-3 bg-blue-500 text-white rounded-xl mt-4">
           Submit
         </button>

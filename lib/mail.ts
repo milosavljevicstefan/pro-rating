@@ -16,13 +16,13 @@ export async function sendMail({
   const { SMTP_EMAIL, SMTP_PASSWORD } = process.env;
 
   const transport = nodemailer.createTransport({
-    host: "mail.pro-rating.com",
-    port: 465,
-    secure: true,
+    host: 'mail.pro-rating.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: "pro-rating@pro-rating.com", 
-      pass: SMTP_PASSWORD,
-    },
+      user: 'pro-rating@pro-rating.com',
+      pass: SMTP_PASSWORD
+    }
   });
 
   try {

@@ -35,7 +35,7 @@ export async function sendMail({
 
   try {
     const sendResult = await transport.sendMail({
-      from: "pro-rating@pro-rating.co",
+      from: "pro-rating@pro-rating.com",
       to,
       subject,
       html: body,

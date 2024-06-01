@@ -1,36 +1,35 @@
-export interface BusinessDetails {
-  image: string;
-  ownerEmail: string;
-  googleLink: string;
-  languages: string[];
-  backgroundColor: string;
-  textColor: string;
-}
+import { BusinessDetails } from "@/types";
 
 export const businessDetails: { [key: string]: BusinessDetails } = {
   "PizzaPlace": {
     image: "/images/caribic-picerija.png",
-    ownerEmail: "owner@pizzaplace.com",
+    ownerEmails: ["owner@pizzaplace.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJ22HMobawVUcRrFM3OthfQGc",
-    languages: ["srb"],
+    languages: ["srb", "ro"],
+    reward: true,
+    rewardText: 'test pizzaplace',
     backgroundColor: "#FF6347", // Tomato red
-    textColor: "#FFD700" // Gold
+    textColor: "#FFFFFF"
   },
   "CoffeeShop": {
     image: "/images/caribic-picerija.png",
-    ownerEmail: "stefan.milosavljevic01@gmail.com",
+    ownerEmails: ["stefan.milosavljevic01@gmail.com", "milosavljevicstefan555@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJ22HMobawVUcRrFM3OthfQGcp",
     languages: ["en", "srb"],
+    reward: true,
+    rewardText: 'test pizzaplace',
     backgroundColor: "#6F4E37", // Coffee brown
-    textColor: "#C0C0C0" // Silver
+    textColor: "#000000"
   },
   "Camelot": {
     image: "/images/camelot.png",
-    ownerEmail: "milosavljevicstefan555@gmail.com",
+    ownerEmails: ["milosavljevicstefan555@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJ22HMobawVUcRrFM3OthfQGcp",
     languages: ["srb"],
+    reward: true,
+    rewardText: 'test pizzaplace',
     backgroundColor: "#C0C0C0", // Silver
-    textColor: "#6F4E37" // Coffee brown
+    textColor: "#FFFFFF"
   }
   // Add more businesses as needed
 };

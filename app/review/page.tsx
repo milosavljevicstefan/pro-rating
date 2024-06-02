@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceFrown, faSmile, faMeh } from '@fortawesome/free-solid-svg-icons';
 import { sendPriceMail, sendReportMail, sendReviewMail } from '@/server/mailServerActions';
 import { BusinessDetails } from '@/types';
-import { PuffLoader } from 'react-spinners';
+import { RotateLoader } from 'react-spinners';
 
 interface Translation {
   thankYou?: string;
@@ -172,7 +172,7 @@ return (
       display: loading ? "block" : "none" // Hide container when loading is false
     }}>
       {loading && ( // Render HashLoader only if loading is true
-        <PuffLoader color="#e1e1e1" loading={loading} size={80} />
+        <RotateLoader color="#e1e1e1" loading={loading} size={20} />
       )}
     </div>
      

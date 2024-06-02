@@ -7,7 +7,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["srb", "ro"],
     reward: true,
-    rewardText: 'test pizzaplace',
+    rewardText: 'nagrada pizzaplace',
     backgroundColor: "#FF6347", // Tomato red
     textColor: "#FFFFFF"
   },
@@ -17,7 +17,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["en", "srb"],
     reward: true,
-    rewardText: 'test pizzaplace',
+    rewardText: 'nagrada coffeeshop',
     backgroundColor: "#6F4E37", // Coffee brown
     textColor: "#000000"
   },
@@ -27,9 +27,18 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["srb"],
     reward: true,
-    rewardText: 'test pizzaplace',
+    rewardText: 'nagrada camelot',
+    backgroundColor: "#C0C0C0", // Silver
+    textColor: "#FFFFFF"
+  },
+  "test": {
+    image: "/images/camelot.png",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
+    languages: ["srb"],
+    reward: true,
+    rewardText: 'nagrada testa',
     backgroundColor: "#C0C0C0", // Silver
     textColor: "#FFFFFF"
   }
-  // Add more businesses as needed
 };

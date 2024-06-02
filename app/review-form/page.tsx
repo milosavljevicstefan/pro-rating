@@ -115,9 +115,25 @@ const ReviewFormContent = () => {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (message.trim() === '') {
+      const errorMessage = details.languages.map(lang => languageTranslations[lang]?.reviewPlaceHolder || '').filter(Boolean).join('\n');
+      toast.error(errorMessage || 'Review cannot be empty.', {
+        position: "bottom-right",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      return;
+    }
+
     let emailMessage = '';
     details.languages.map(language => emailMessage += "\n\n" + languageTranslations[language].emailSuccess);
-    const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, table || ''));
+    const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, searchParams.get('tableNumber') || ''));
     await Promise.all(emailPromises);
     toast.success(emailMessage, {
       position: "bottom-right",
@@ -131,10 +147,10 @@ const ReviewFormContent = () => {
       transition: Bounce,
       onClose: () => {
         const businessNameParam = businessName ? encodeURIComponent(businessName) : '';
-        const tableParam = table ? encodeURIComponent(table) : '';
+        const tableParam = searchParams.get('tableNumber') ? encodeURIComponent(searchParams.get('tableNumber')!) : '';
         const queryString = `?businessName=${businessNameParam}&tableNumber=${tableParam}`;
         router.push(`/review${queryString}`);
-    }
+      }
     });
   };
 
@@ -172,33 +188,33 @@ const ReviewFormContent = () => {
         ) : null;
       })}
       <div className='mb-4'></div>
-      <form onSubmit={handleSubmit} className="w-full flex flex-col flex-grow">
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder={
-            details.languages
-              .map((lang) => {
-                const translations = languageTranslations[lang];
-                return translations ? translations.reviewPlaceHolder : null;
-              })
-              .filter((translation) => translation !== null)
-              .join('\n') // Use newline character to separate the translations
-          }
-          className="flex-grow w-full p-3 mb-4 border rounded-xl bg-gray-100 text-black"
-        />
-        <button type="submit" className="w-full p-3 bg-blue-500 text-white rounded-xl mt-2" style={{ maxHeight: "3rem", overflow: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          {details.languages.map((lang) => {
-            const translations = languageTranslations[lang];
-            return translations ? (
-              <React.Fragment key={lang}>
-                {translations.submit}<br />
-              </React.Fragment>
-            ) : null;
-          })}
-        </button>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit} className="w-full flex flex-col flex-grow">
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder={
+              details.languages
+                .map((lang) => {
+                  const translations = languageTranslations[lang];
+                  return translations ? translations.reviewPlaceHolder : null;
+                })
+                .filter((translation) => translation !== null)
+                .join('\n')
+            }
+            className="flex-grow w-full p-3 mb-4 border rounded-xl bg-gray-100 text-black"
+          />
+          <button type="submit" className="w-full p-3 bg-blue-500 text-white rounded-xl mt-2" style={{ maxHeight: "3rem", overflow: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {details.languages.map((lang) => {
+              const translations = languageTranslations[lang];
+              return translations ? (
+                <React.Fragment key={lang}>
+                  {translations.submit}<br />
+                </React.Fragment>
+              ) : null;
+            })}
+          </button>
+        </form>
+      </div>
   );
 };
 

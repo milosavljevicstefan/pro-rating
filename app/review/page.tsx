@@ -6,8 +6,9 @@ import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { businessDetails } from '../../data/businesses';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceFrown, faSmile, faMeh } from '@fortawesome/free-solid-svg-icons';
-import { sendPriceMail, sendReviewMail } from '@/server/mailServerActions';
+import { sendPriceMail, sendReportMail, sendReviewMail } from '@/server/mailServerActions';
 import { BusinessDetails } from '@/types';
+import { HashLoader } from 'react-spinners';
 
 interface Translation {
   thankYou?: string;
@@ -30,7 +31,7 @@ const ReviewContent = () => {
   const searchParams = useSearchParams();
   const businessName = searchParams.get('businessName');
   const [emailError, setEmailError] = useState('');
-
+  const [loading, setLoading] = useState<boolean>(false);
   const [business, setBusiness] = useState<string | null>(businessName);
   const [table, setTable] = useState<string | null>(searchParams.get('tableNumber'));
   const [details, setDetails] = useState<BusinessDetails>({
@@ -133,13 +134,19 @@ const ReviewContent = () => {
 
   const send = async (rating: string) => {
     const email = emailRef.current!.value;
-    const translations = languageTranslations[details.languages[0]] || languageTranslations['en']; // Default to English
-    if (email !== '') {
-      if (!validateEmail(email)) {
-        setEmailError(translations?.errorLabel || 'Please enter a valid email.');
-        return;
-      }
-      sendPriceMail(email, business || '');
+    const translations = languageTranslations[details.languages[0]] || languageTranslations['en'];
+    if (details.reward) {
+      if (email !== '') {
+        if (!validateEmail(email)) {
+          setEmailError(translations?.errorLabel || 'Please enter a valid email.');
+          return;
+        }
+        sendPriceMail(email, business || '', details.rewardText);
+        const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, table || ''));
+        setLoading(true);
+        await Promise.all(emailPromises);
+        setLoading(false);
+
     }
     if (rating === 'good' && details.googleLink) {
       window.location.href = details.googleLink;
@@ -147,6 +154,7 @@ const ReviewContent = () => {
       router.push(`/review-form?businessName=${business}&tableNumber=${table}`);
     }
   }
+}
 
 return (
   <div 
@@ -156,6 +164,18 @@ return (
       color: details.textColor
     }}
   >
+     <div style={{
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      display: loading ? "block" : "none" // Hide container when loading is false
+    }}>
+      {loading && ( // Render HashLoader only if loading is true
+        <HashLoader color="#e1e1e1" loading={loading} size={80} />
+      )}
+    </div>
+     
     <img 
       src={details.image} 
       alt="Business" 
@@ -183,28 +203,31 @@ return (
         ) : null;
       })}
     </div>
-    <input
-      type="email"
-      placeholder="Email"
-      className={`p-3 w-full border-2 rounded-xl text-black ${emailError ? 'border-red-500' : ''}`}
-      ref={emailRef}
-      style={{ maxHeight: "3rem", overflow: "auto", height: '60%' }}
-    />
-    {emailError ? (
-      <div className='text-red-700 mb-1'>
-        {details.languages.map((lang) => {
-      const translations = languageTranslations[lang];
-      return translations ? (
-        <React.Fragment key={lang}>
-          <p className=''>{translations?.enterEmail}</p>
-        </React.Fragment>
-      ) : null;
-    })}
-      </div>
-    ) : (
-      <div className="h-6"/>
+    {details.reward && (
+      <>
+        <input
+          type="email"
+          placeholder="Email"
+          className={`p-3 w-full border-2 rounded-xl text-black ${emailError ? 'border-red-500' : ''}`}
+          ref={emailRef}
+          style={{ maxHeight: "3rem", overflow: "auto", height: '60%' }}
+        />
+        {emailError ? (
+          <div className='text-red-700 mb-1'>
+            {details.languages.map((lang) => {
+              const translations = languageTranslations[lang];
+              return translations ? (
+                <React.Fragment key={lang}>
+                  <p className=''>{translations?.enterEmail}</p>
+                </React.Fragment>
+              ) : null;
+            })}
+          </div>
+        ) : (
+          <div className="h-6"/>
+        )}
+      </>
     )}
-
     <div className="flex flex-col justify-between h-full" style={{ height: '70%' }}>
       <div className="flex justify-around" style={{ height: '70%' }}>
         <div className="cursor-pointer flex flex-col items-center  ml-4 p-3 mb-10" style={{ width: "3.2rem", height: "3.2rem" }} onClick={() => send('bad')}>
@@ -278,3 +301,4 @@ const Review = () => {
 };
 
 export default Review;
+

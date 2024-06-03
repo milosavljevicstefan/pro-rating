@@ -128,6 +128,16 @@ const ReviewContent = () => {
         bad: 'Rău',
         okay: 'Bine',
         good: 'Bun'
+    },
+    'gg': {
+        thankYou: 'iutiutiuti',
+        enterEmail: 'Introduceți emailul dvs. și câștigați un premiu.',
+        pleaseRate: 'Vă rugăm să ne evaluați și să ne ajutați să creștem împreună.',
+        errorLabel: 'Vă rugăm să introduceți o adresă de email validă.',
+        placeHolder: 'Introduceți adresa dvs. de email...',
+        bad: 'sranje',
+        okay: 'Bine',
+        good: 'Bun'
     }
 };
 

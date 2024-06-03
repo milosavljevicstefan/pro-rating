@@ -111,6 +111,14 @@ const ReviewFormContent = () => {
       reviewPlaceHolder: 'Introduceți recenzia dumneavoastră...',
       submit: 'Trimite'
     },
+    'gg': {
+      yourOpinion: 'jljljljljljljljljljljljljjljljljlj668678787',
+      thankYou: 'Vă mulțumim că v-ați luat timp să împărtășiți impresiile dumneavoastră cu noi.',
+      keyToService: 'Părerea dumneavoastră este cheia pentru crearea serviciilor adaptate nevoilor dumneavoastră.',
+      emailSuccess: 'Vă mulțumim pentru feedback! Părerea dumneavoastră a fost înregistrată.',
+      reviewPlaceHolder: 'Introduceți recenzia dumneavoastră...',
+      submit: 'Trimite'
+    },
   };
   
   const handleSubmit = async (e: React.FormEvent) => {

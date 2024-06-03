@@ -46,8 +46,8 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["srb"],
-    reward: false,
-    rewardText: 'sffdf',
+    reward: true,
+    rewardText: 'nagrada cot',
     backgroundColor: "#FFFFFF", // Silver
     textColor: "#000000"
   }

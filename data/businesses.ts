@@ -40,5 +40,15 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     rewardText: 'nagrada testa',
     backgroundColor: "#C0C0C0", // Silver
     textColor: "#FFFFFF"
+  },
+  "crveni-cot": {
+    image: "/images/crveni-cot.png",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
+    languages: ["srb"],
+    reward: false,
+    rewardText: 'sffdf',
+    backgroundColor: "#FFFFFF", // Silver
+    textColor: "#000000"
   }
 };

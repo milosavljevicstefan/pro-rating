@@ -48,7 +48,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     languages: ["srb"],
     reward: true,
     rewardText: 'nagrada cot',
-    backgroundColor: "#FFFFFF", // Silver
+    backgroundColor: "#e8f4fc", // Silver
     textColor: "#000000"
   }
 };

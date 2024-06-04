@@ -42,7 +42,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#FFFFFF"
   },
   "crveni-cot": {
-    image: "/images/crveni-cot.png",
+    image: "/images/Zidni kalendar.jpg",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["gg"],

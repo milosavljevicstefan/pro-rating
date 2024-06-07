@@ -33,7 +33,7 @@ const ReviewContent = () => {
   const [emailError, setEmailError] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
   const [business, setBusiness] = useState<string | null>(businessName);
-  const [table, setTable] = useState<string | null>(searchParams.get('tableNumber'));
+  const [number, setNumber] = useState<string | null>(searchParams.get('number'));
   const [details, setDetails] = useState<BusinessDetails>({
     image: '',
     ownerEmails: [],
@@ -51,6 +51,12 @@ const ReviewContent = () => {
   };
 
   useEffect(() => {
+    if (emailError !== '') {
+      //throw error toast here! 
+    }
+  }, [emailError])
+
+  useEffect(() => {
     if (businessName) {
       setBusiness(businessName);
       const businessInfo = businessDetails[businessName] || {
@@ -63,8 +69,8 @@ const ReviewContent = () => {
       };
       setDetails(businessInfo);
     }
-    if (searchParams.get('tableNumber')) {
-      setTable(searchParams.get('tableNumber'));
+    if (searchParams.get('number')) {
+      setNumber(searchParams.get('number'));
     }
   }, [businessName, searchParams]);
 
@@ -139,39 +145,40 @@ const ReviewContent = () => {
         okay: 'Bine',
         good: 'Bun'
     }
-};
+  };
 
 
   const send = async (rating: string) => {
-    const email = emailRef.current!.value;
     const translations = languageTranslations[details.languages[0]] || languageTranslations['en'];
     if (details.reward) {
+      const email = emailRef.current!.value;
       if (email !== '') {
         if (!validateEmail(email)) {
           setEmailError(translations?.errorLabel || 'Please enter a valid email.');
           return;
         }
         sendPriceMail(email, business || '', details.rewardText);
-        const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, table || ''));
+        const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, number || '', details.languages));
         setLoading(true);
         await Promise.all(emailPromises);
         setLoading(false);
-
     }
-    if (rating === 'good' && details.googleLink) {
-      window.location.href = details.googleLink;
-    } else {
-      router.push(`/review-form?businessName=${business}&tableNumber=${table}`);
-    }
+  }
+  if (rating === 'good' && details.googleLink) {
+    window.location.href = details.googleLink;
+  } else {
+    router.push(`/review-form?businessName=${business}&number=${number}`);
   }
 }
 
 return (
   <div 
-    className="flex flex-col justify-center items-center p-6 w-screen h-screen text-center font-poppins" 
+    className="flex flex-col justify-center items-center w-screen h-screen text-center font-poppins overflow-hidden" 
     style={{ 
       backgroundColor: details.backgroundColor,
-      color: details.textColor
+      color: details.textColor,
+      display: "flex",
+      flexDirection: "column"
     }}
   >
      <div style={{
@@ -185,14 +192,25 @@ return (
         <RotateLoader color="#e1e1e1" loading={loading} size={20} />
       )}
     </div>
-     
+    <div className="w-full">
+  <img 
+    src={details.image} 
+    alt="Business" 
+    className="w-full h-auto object-cover md:hidden"
+    style={{ height: '40vh', width: '100%' }} // Hide for screens larger than mobile (md and above)
+  />
+  <div className="hidden md:block" style={{ height: '40vh', width: '100%' }}> {/* Show only for screens larger than mobile (md and above) */}
     <img 
       src={details.image} 
       alt="Business" 
-      className="w-full h-48 object-contain " 
-      style={{ height: '30%' }}
+      className="w-full h-full object-contain" 
     />
-    <div style={{ height: '40%' }} className="text-3xl">
+  </div>
+</div>
+
+    
+    
+    <div style={{ height: '15%' }} className="text-3xl py-2">
       {details.languages.map((lang) => {
       const translations = languageTranslations[lang];
       return translations ? (
@@ -202,27 +220,29 @@ return (
       ) : null;
     })}
     </div >
-    
-    <div className='text-l' style={{height: '50%'}}>
-      {details.languages.map((lang) => {
-        const translations = languageTranslations[lang];
-        return translations ? (
-          <React.Fragment key={lang}>
-            <p className=''>{translations?.enterEmail}</p>
-          </React.Fragment>
-        ) : null;
-      })}
-    </div>
     {details.reward && (
       <>
+        <div className='text-l py-2' style={{height: '10%'}}>
+          {details.languages.map((lang) => {
+            const translations = languageTranslations[lang];
+            return translations ? (
+              <React.Fragment key={lang}>
+                <p className=''>{translations?.enterEmail}</p>
+              </React.Fragment>
+            ) : null;
+          })}
+        </div>
+        <div className='w-full px-6' style={{ height: '10%'}}>
         <input
           type="email"
           placeholder="Email"
           className={`p-3 w-full border-2 rounded-xl text-black ${emailError ? 'border-red-500' : ''}`}
           ref={emailRef}
-          style={{ maxHeight: "3rem", overflow: "auto", height: '60%' }}
+          style={{ maxHeight: "3rem", overflow: "auto" }}
         />
-        {emailError ? (
+        </div>
+        
+        {/* {emailError ? (
           <div className='text-red-700 mb-1'>
             {details.languages.map((lang) => {
               const translations = languageTranslations[lang];
@@ -234,17 +254,17 @@ return (
             })}
           </div>
         ) : (
-          <div className="h-6"/>
-        )}
+          <div className=""/>
+        )} */}
       </>
     )}
-    <div className="flex flex-col justify-between h-full" style={{ height: '70%' }}>
-      <div className="flex justify-around" style={{ height: '70%' }}>
-        <div className="cursor-pointer flex flex-col items-center  ml-4 p-3 mb-10" style={{ width: "3.2rem", height: "3.2rem" }} onClick={() => send('bad')}>
-          <div>
-            <FontAwesomeIcon icon={faFaceFrown} className='bg-white rounded-full' style={{ color: "#f93434", fontSize: "3rem" }} />
-          </div>
-          <div className='text-sm'>
+    <div className="flex flex-col justify-between h-full " style={{ height: '15%' }}>
+    <div className="flex justify-around">
+      <div className="cursor-pointer flex flex-col items-center  ml-4 p-3 mb-10" style={{ width: "3.2rem", height: "3.2rem", marginRight: "3rem" }} onClick={() => send('bad')}>
+        <div>
+          <FontAwesomeIcon icon={faFaceFrown} className='bg-white rounded-full' style={{ color: "#f93434", fontSize: "3rem" }} />
+        </div>
+        <div className='text-sm'>
           {details.languages.map((lang) => {
             const translations = languageTranslations[lang];
             return translations ? (
@@ -253,41 +273,42 @@ return (
               </React.Fragment>
             ) : null;
           })}
-          </div>
-        </div>
-        <div className="cursor-pointer flex flex-col items-center  p-3" style={{ width: "3.2rem", height: "3.2rem" }} onClick={() => send('okay')}>
-          <div>
-            <FontAwesomeIcon icon={faMeh} className='bg-white rounded-full' style={{ color: "#FFD43B", fontSize: "3rem" }} />
-          </div>
-          <div className='text-sm'>
-            {details.languages.map((lang) => {
-              const translations = languageTranslations[lang];
-              return translations ? (
-                <React.Fragment key={lang}>
-                  <p className='' style={{ whiteSpace: 'nowrap' }}>{translations?.okay}</p>
-                </React.Fragment>
-              ) : null;
-            })}
-          </div>
-        </div>
-        <div className="cursor-pointer flex flex-col items-center mr-4 p-3" style={{ width: "3.2rem", height: "3.2rem" }} onClick={() => send('good')}>
-          <div>
-            <FontAwesomeIcon icon={faSmile} className='bg-white rounded-full' style={{ color: "#1bac11", fontSize: "3rem" }} />
-          </div>
-          <div className='text-sm'>
-            {details.languages.map((lang) => {
-              const translations = languageTranslations[lang];
-              return translations ? (
-                <React.Fragment key={lang}>
-                  <p className='' style={{ whiteSpace: 'nowrap' }}>{translations?.good}</p>
-                </React.Fragment>
-              ) : null;
-            })}
-          </div>
         </div>
       </div>
-
-      <div className='pt-8' style={{ height: '100%' }}>
+      <div className="cursor-pointer flex flex-col items-center  p-3" style={{ width: "3.2rem", height: "3.2rem", marginRight: "3rem" }} onClick={() => send('okay')}>
+        <div>
+          <FontAwesomeIcon icon={faMeh} className='bg-white rounded-full' style={{ color: "#FFD43B", fontSize: "3rem" }} />
+        </div>
+        <div className='text-sm'>
+          {details.languages.map((lang) => {
+            const translations = languageTranslations[lang];
+            return translations ? (
+              <React.Fragment key={lang}>
+                <p className='' style={{ whiteSpace: 'nowrap' }}>{translations?.okay}</p>
+              </React.Fragment>
+            ) : null;
+          })}
+        </div>
+      </div>
+      <div className="cursor-pointer flex flex-col items-center mr-4 p-3" style={{ width: "3.2rem", height: "3.2rem" }} onClick={() => send('good')}>
+        <div>
+          <FontAwesomeIcon icon={faSmile} className='bg-white rounded-full' style={{ color: "#1bac11", fontSize: "3rem" }} />
+        </div>
+        <div className='text-sm'>
+          {details.languages.map((lang) => {
+            const translations = languageTranslations[lang];
+            return translations ? (
+              <React.Fragment key={lang}>
+                <p className='' style={{ whiteSpace: 'nowrap' }}>{translations?.good}</p>
+              </React.Fragment>
+            ) : null;
+          })}
+        </div>
+      </div>
+    </div>
+    </div>
+    <div className='flex items-end pb-6' style={{ height: '10%' }}>
+    <div className="flex flex-col">
       {details.languages.map((lang) => {
         const translations = languageTranslations[lang];
         return translations ? (
@@ -296,8 +317,10 @@ return (
           </React.Fragment>
         ) : null;
       })}
-      </div>
     </div>
+    </div>
+
+
   </div>
 );
 };

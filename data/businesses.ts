@@ -6,7 +6,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     ownerEmails: ["owner@pizzaplace.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
     languages: ["srb", "ro"],
-    reward: true,
+    reward: false,
     rewardText: 'nagrada pizzaplace',
     backgroundColor: "#FF6347", // Tomato red
     textColor: "#FFFFFF"

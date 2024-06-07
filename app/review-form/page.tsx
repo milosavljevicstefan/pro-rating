@@ -8,6 +8,7 @@ import { sendReviewMail } from '@/server/mailServerActions';
 import { BusinessDetails } from '@/types';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RotateLoader } from 'react-spinners';
 
 interface Translation {
   yourOpinion?: string;
@@ -28,7 +29,8 @@ const ReviewFormContent = () => {
   const businessName = searchParams.get('businessName');
 
   const [business, setBusiness] = useState<string | null>(businessName);
-  const [table, setTable] = useState<string | null>(searchParams.get('tableNumber'));
+  const [number, setNumber] = useState<string | null>(searchParams.get('number'));
+  const [loading, setLoading] = useState<boolean>(false);
   const [details, setDetails] = useState<BusinessDetails>({
     image: '',
     ownerEmails: [],
@@ -55,8 +57,8 @@ const ReviewFormContent = () => {
       };
       setDetails(businessInfo);
     }
-    if (searchParams.get('tableNumber')) {
-      setTable(searchParams.get('tableNumber'));
+    if (searchParams.get('number')) {
+      setNumber(searchParams.get('number'));
     }
   }, [businessName, searchParams]);
 
@@ -140,9 +142,11 @@ const ReviewFormContent = () => {
     }
 
     let emailMessage = '';
+    setLoading(true)
     details.languages.map(language => emailMessage += "\n\n" + languageTranslations[language].emailSuccess);
-    const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, searchParams.get('tableNumber') || ''));
+    const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, searchParams.get('number') || '', details.languages));
     await Promise.all(emailPromises);
+    setLoading(false)
     toast.success(emailMessage, {
       position: "bottom-right",
       autoClose: 7000,
@@ -155,8 +159,8 @@ const ReviewFormContent = () => {
       transition: Bounce,
       onClose: () => {
         const businessNameParam = businessName ? encodeURIComponent(businessName) : '';
-        const tableParam = searchParams.get('tableNumber') ? encodeURIComponent(searchParams.get('tableNumber')!) : '';
-        const queryString = `?businessName=${businessNameParam}&tableNumber=${tableParam}`;
+        const numberParam = searchParams.get('number') ? encodeURIComponent(searchParams.get('number')!) : '';
+        const queryString = `?businessName=${businessNameParam}&number=${numberParam}`;
         router.push(`/review${queryString}`);
       }
     });
@@ -164,11 +168,22 @@ const ReviewFormContent = () => {
 
   return (
     <div 
-    className="flex flex-col items-center p-6 w-full h-screen max-w-md mx-auto text-center font-poppins"
+    className="flex flex-col items-center p-6 w-full h-screen text-center font-poppins"
     style={{ 
       backgroundColor: details.backgroundColor,
       color: details.textColor
     }}>
+      <div style={{
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      display: loading ? "block" : "none" // Hide container when loading is false
+    }}>
+      {loading && ( // Render HashLoader only if loading is true
+        <RotateLoader color="#e1e1e1" loading={loading} size={20} />
+      )}
+    </div>
       {details.languages.map((lang) => {
         const translations = languageTranslations[lang];
         return translations ? (
@@ -211,16 +226,19 @@ const ReviewFormContent = () => {
             }
             className="flex-grow w-full p-3 mb-4 border rounded-xl bg-gray-100 text-black"
           />
-          <button type="submit" className="w-full p-3 bg-blue-500 text-white rounded-xl mt-2" style={{ maxHeight: "3rem", overflow: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            {details.languages.map((lang) => {
-              const translations = languageTranslations[lang];
-              return translations ? (
-                <React.Fragment key={lang}>
-                  {translations.submit}<br />
-                </React.Fragment>
-              ) : null;
-            })}
-          </button>
+         <button 
+          type="submit" 
+          className="w-full p-3 bg-blue-500 text-white rounded-xl mt-2" 
+          style={{ maxHeight: "3rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {details.languages.map((lang) => {
+            const translations = languageTranslations[lang];
+            return translations ? (
+              <React.Fragment key={lang}>
+                {translations.submit}<br />
+              </React.Fragment>
+            ) : null;
+          })}
+        </button>
         </form>
       </div>
   );

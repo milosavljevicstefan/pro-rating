@@ -50,5 +50,15 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     rewardText: 'nagrada cot',
     backgroundColor: "#e8f4fc", // Silver
     textColor: "#000000"
+  },
+  "hvmzm": {
+    image: "/images/HVMZM-Logo.png",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
+    languages: ["de"],
+    reward: true,
+    rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
+    backgroundColor: "#FFFFFFF", // Silver
+    textColor: "#000000"
   }
 };

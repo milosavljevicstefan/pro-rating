@@ -52,7 +52,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#000000"
   },
   "hvmzm": {
-    image: "/images/HVMZM logo ls.png",
+    image: "/images/HVMZM LS.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
     languages: ["de"],

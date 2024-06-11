@@ -109,7 +109,7 @@ const ReviewContent = () => {
         thankYou: 'Danke für Ihren Besuch!',
         enterEmail: 'Geben Sie Ihre E-Mail ein und gewinnen Sie einen Preis.',
         pleaseRate: 'Bitte bewerten Sie uns und helfen Sie uns, gemeinsam zu wachsen.',
-        errorLabel: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+        //errorLabel: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
         placeHolder: 'Geben Sie Ihre E-Mail-Adresse ein...',
         bad: 'Schlecht',
         okay: 'Okay',

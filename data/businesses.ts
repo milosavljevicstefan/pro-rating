@@ -65,8 +65,8 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     image: "/images/RAKITA.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
-    languages: ["hr"],
-    reward: true,
+    languages: ["cro"],
+    reward: false,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#FFFFFFF", // Silver
     textColor: "#000000"

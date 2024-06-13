@@ -83,8 +83,8 @@ const ReviewFormContent = () => {
     },
     'cro': {
       yourOpinion: 'Vaše mišljenje nam je važno!',
-      thankYou: 'Hvala vam što ste izdvojili vrijeme da podijelite svoje dojmove s nama.',
-      keyToService: 'Vaše mišljenje je ključno za stvaranje usluga prilagođenih vašim potrebama.',
+      thankYou: 'Hvala vam što ste izdvojili vrijeme da podijelite svoje mišljenje s nama.',
+      //keyToService: 'Vaše mišljenje je ključno za stvaranje usluga prilagođenih vašim potrebama.',
       emailSuccess: 'Hvala vam na povratnim informacijama! Vaše mišljenje je zabeleženo.',
       reviewPlaceHolder: 'Unesite svoju recenziju...',
       submit: 'Pošalji'

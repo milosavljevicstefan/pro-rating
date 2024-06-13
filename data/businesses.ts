@@ -63,7 +63,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
   },
   "RAKITA": {
     image: "/images/RAKITA.png",
-    ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
+    ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJcWFv561tThMRlKW17QDBV3s",
     languages: ["cro"],
     reward: false,

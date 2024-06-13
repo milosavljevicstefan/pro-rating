@@ -98,7 +98,7 @@ const ReviewContent = () => {
     'cro': {
         thankYou: 'Hvala vam na posjeti!',
         enterEmail: 'Unesite svoj email i osvojite nagradu.',
-        pleaseRate: 'Molimo vas da nas ocijenite i pomognete nam rasti zajedno.',
+        pleaseRate: 'Molimo Vas odaberite smajlija koji najbolje opisuje Vaše iskustvo sa nama.',
         errorLabel: 'Molimo unesite važeću email adresu.',
         placeHolder: 'Unesite svoj email...',
         bad: 'Loše',

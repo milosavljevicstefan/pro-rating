@@ -242,7 +242,7 @@ return (
         />
         </div>
         
-        {/* {emailError ? (
+        {emailError ? (
           <div className='text-red-700 mb-1'>
             {details.languages.map((lang) => {
               const translations = languageTranslations[lang];
@@ -255,9 +255,21 @@ return (
           </div>
         ) : (
           <div className=""/>
-        )} */}
+        )}
       </>
     )}
+    <div className='flex items-end pb-6' style={{ height: '10%' }}>
+    <div className="flex flex-col">
+      {details.languages.map((lang) => {
+        const translations = languageTranslations[lang];
+        return translations ? (
+          <React.Fragment key={lang}>
+            <p className=''>{translations?.pleaseRate}</p>
+          </React.Fragment>
+        ) : null;
+      })}
+    </div>
+    </div>
     <div className="flex flex-col justify-between h-full " style={{ height: '15%' }}>
     <div className="flex justify-around">
       <div className="cursor-pointer flex flex-col items-center  ml-4 p-3 mb-10" style={{ width: "3.2rem", height: "3.2rem", marginRight: "3rem" }} onClick={() => send('bad')}>
@@ -307,18 +319,7 @@ return (
       </div>
     </div>
     </div>
-    <div className='flex items-end pb-6' style={{ height: '10%' }}>
-    <div className="flex flex-col">
-      {details.languages.map((lang) => {
-        const translations = languageTranslations[lang];
-        return translations ? (
-          <React.Fragment key={lang}>
-            <p className=''>{translations?.pleaseRate}</p>
-          </React.Fragment>
-        ) : null;
-      })}
-    </div>
-    </div>
+    
 
 
   </div>

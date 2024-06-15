@@ -90,7 +90,7 @@ export async function sendReviewMail(to: string, businessName: string, review: s
         to: to,
         name: "Ime? ?",
         subject: subjectText + " " + businessName,
-        body: '<h1>' + languageTranslations[languages[0]].number  + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString() + '</h1><h1>' + languageTranslations[languages[0]].review + ': ' + review + '</h1>'
+        body: '<h1>' + languageTranslations[languages[0]].number  + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString("en-US", { timeZone: 'Europe/Berlin' }) + '</h1><h1>' + languageTranslations[languages[0]].review + ': ' + review + '</h1>'
     });
 }
 
@@ -102,6 +102,6 @@ export async function sendReportMail(to: string, email: string, table: string, l
         to: to,
         name: "Ime? ?",
         subject: languageTranslations[languages[0]]?.subject ?? "User has claimed the reward!",
-        body: '<h1>' + email + ', ' + languageTranslations[languages[0]].number + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString() + languageTranslations[languages[0]].text + '</h1>'
+        body: '<h1>' + email + ', ' + languageTranslations[languages[0]].number + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString("en-US", { timeZone: 'Europe/Berlin' }) + languageTranslations[languages[0]].text + '</h1>'
     });
 }

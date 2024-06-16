@@ -73,11 +73,16 @@ export async function sendPriceMail(to: string, businessName: string, rewardText
         to: to,
         name: "Ime? ?",
         subject: businessName,
-        body: '<h1>' + rewardText + '</h1>'
+        body: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+            <h2>${businessName}</h2>
+            <p>${rewardText}</p>
+        </div>
+        `
     });
 }
 
-export async function sendReviewMail(to: string, businessName: string, review: string, table: string, languages: string[]) {
+export async function sendReviewMail(to: string, businessName: string, review: string, table: string, languages: string[], timeZone: string) {
     const language = languages[0];
     const translation = language ? languageTranslations[language] : undefined;
     const reviewText = translation?.review;
@@ -90,18 +95,30 @@ export async function sendReviewMail(to: string, businessName: string, review: s
         to: to,
         name: "Ime? ?",
         subject: subjectText + " " + businessName,
-        body: '<h1>' + languageTranslations[languages[0]].number  + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString("en-US", { timeZone: 'Europe/Berlin' }) + '</h1><h1>' + languageTranslations[languages[0]].review + ': ' + review + '</h1>'
+        body: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2>${subjectText} ${businessName}</h2>
+          <p><strong>${languageTranslations[languages[0]].number}</strong> ${table}</p>
+          <p><strong>${languageTranslations[languages[0]].time}</strong> ${new Date().toLocaleString("en-US", { timeZone: timeZone })}</p>
+          <p><strong>${languageTranslations[languages[0]].review}</strong>: ${review}</p>
+        </div>
+      `
     });
 }
 
-export async function sendReportMail(to: string, email: string, table: string, languages: string[]) {
+export async function sendReportMail(to: string, email: string, table: string, languages: string[], timeZone: string) {
 
-    
 
     await sendMail({
         to: to,
         name: "Ime? ?",
         subject: languageTranslations[languages[0]]?.subject ?? "User has claimed the reward!",
-        body: '<h1>' + email + ', ' + languageTranslations[languages[0]].number + table + ', ' + languageTranslations[languages[0]].time + new Date().toLocaleString("en-US", { timeZone: 'Europe/Berlin' }) + languageTranslations[languages[0]].text + '</h1>'
+        body: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+          <p>${languageTranslations[languages[0]].number} ${table}</p>
+          <p>${languageTranslations[languages[0]].time} ${new Date().toLocaleString("en-US", { timeZone: timeZone })}</p>
+          <p>${email} ${languageTranslations[languages[0]].text}</p>
+        </div>
+      `
     });
 }

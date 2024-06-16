@@ -2,6 +2,7 @@ import { BusinessDetails } from "@/types";
 
 export const businessDetails: { [key: string]: BusinessDetails } = {
   "PizzaPlace": {
+    activated: false,
     image: "/images/caribic-picerija.png",
     ownerEmails: ["owner@pizzaplace.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
@@ -9,9 +10,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: false,
     rewardText: 'nagrada pizzaplace',
     backgroundColor: "#FF6347", // Tomato red
-    textColor: "#FFFFFF"
+    textColor: "#FFFFFF",
+    timeZone: "Europe/Berlin"
   },
   "CoffeeShop": {
+    activated: true,
     image: "/images/caribic-picerija.png",
     ownerEmails: ["stefan.milosavljevic01@gmail.com", "milosavljevicstefan555@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
@@ -19,9 +22,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: true,
     rewardText: 'nagrada coffeeshop',
     backgroundColor: "#6F4E37", // Coffee brown
-    textColor: "#000000"
+    textColor: "#000000",
+    timeZone: "Europe/Berlin"
   },
   "Camelot": {
+    activated: true,
     image: "/images/camelot.png",
     ownerEmails: ["milosavljevicstefan555@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
@@ -29,9 +34,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: true,
     rewardText: 'nagrada camelot',
     backgroundColor: "#C0C0C0", // Silver
-    textColor: "#FFFFFF"
+    textColor: "#FFFFFF",
+    timeZone: "Europe/Berlin"
   },
   "test": {
+    activated: false,
     image: "/images/camelot.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
@@ -39,9 +46,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: true,
     rewardText: 'nagrada testa',
     backgroundColor: "#C0C0C0", // Silver
-    textColor: "#FFFFFF"
+    textColor: "#FFFFFF",
+    timeZone: "Europe/Berlin"
   },
   "crveni-cot": {
+    activated: true,
     image: "/images/crveni-cot.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
@@ -49,9 +58,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: true,
     rewardText: 'nagrada cot',
     backgroundColor: "#e8f4fc", // Silver
-    textColor: "#000000"
+    textColor: "#000000",
+    timeZone: "Europe/Berlin"
   },
   "hvmzm": {
+    activated: true,
     image: "/images/HVMZM LS.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
@@ -59,9 +70,11 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: true,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#FFFFFFF", // Silver
-    textColor: "#000000"
+    textColor: "#000000",
+    timeZone: "Europe/Berlin"
   },
   "RAKITA": {
+    activated: true,
     image: "/images/RAKITA.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJcWFv561tThMRlKW17QDBV3s",
@@ -69,6 +82,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     reward: false,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#e4f4fe", // Silver
-    textColor: "#000000"
+    textColor: "#000000",
+    timeZone: "Europe/Berlin"
   }
 };

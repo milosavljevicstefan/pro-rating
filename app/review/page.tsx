@@ -2,7 +2,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, use, useEffect, useRef, useState } from 'react';
 import { businessDetails } from '../../data/businesses';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFaceFrown, faSmile, faMeh } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +44,7 @@ const ReviewContent = () => {
   const [business, setBusiness] = useState<string | null>(businessName);
   const [number, setNumber] = useState<string | null>(searchParams.get('number'));
   const [details, setDetails] = useState<BusinessDetails>({
+    activated: true,
     image: '',
     ownerEmails: [],
     googleLink: '',
@@ -51,7 +52,8 @@ const ReviewContent = () => {
     reward: false,
     rewardText: '',
     backgroundColor: '',
-    textColor: ''
+    textColor: '',
+    timeZone: 'Europe/Berlin'
   });
   const [view, setView] = useState('review');
   const [message, setMessage] = useState('');
@@ -62,10 +64,12 @@ const ReviewContent = () => {
   };
 
   useEffect(() => {
-    if (emailError !== '') {
-      //throw error toast here! 
+    if (!details.activated) {
+      if (typeof window !== "undefined") {
+        window.location.href = "https://www.pro-rating.com";
+      }
     }
-  }, [emailError])
+  }, [details.activated])
 
   useEffect(() => {
     if (businessName) {
@@ -223,7 +227,7 @@ const ReviewContent = () => {
           return;
         }
         sendPriceMail(email, business || '', details.rewardText);
-        const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, number || '', details.languages));
+        const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, number || '', details.languages, details.timeZone));
         setLoading(true);
         Promise.all(emailPromises);
         setLoading(false);
@@ -257,7 +261,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   let emailMessage = '';
   setLoading(true)
   details.languages.map(language => emailMessage += "\n\n" + languageTranslations[language].emailSuccess);
-  const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, searchParams.get('number') || '', details.languages));
+  const emailPromises = details.ownerEmails.map(email => sendReviewMail(email, businessName || '', message, searchParams.get('number') || '', details.languages, details.timeZone));
   await Promise.all(emailPromises);
   setLoading(false)
   toast.success(emailMessage, {
@@ -294,9 +298,9 @@ return (
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-      display: loading ? "block" : "none" // Hide container when loading is false
+      display: loading ? "block" : "none" 
     }}>
-      {loading && ( // Render HashLoader only if loading is true
+      {loading && ( 
         <RotateLoader color="#e1e1e1" loading={loading} size={20} />
       )}
     </div>
@@ -307,9 +311,9 @@ return (
         src={details.image} 
         alt="Business" 
         className="w-full h-auto object-cover md:hidden"
-        style={{ height: '40vh', width: '100%' }} // Hide for screens larger than mobile (md and above)
+        style={{ height: '40vh', width: '100%' }} 
       />
-      <div className="hidden md:block" style={{ height: '40vh', width: '100%' }}> {/* Show only for screens larger than mobile (md and above) */}
+      <div className="hidden md:block" style={{ height: '40vh', width: '100%' }}> 
         <img 
           src={details.image} 
           alt="Business" 

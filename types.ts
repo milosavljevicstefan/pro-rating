@@ -1,4 +1,5 @@
 export type BusinessDetails = {
+    activated: boolean;
     image: string;
     ownerEmails: string[];
     googleLink: string;
@@ -7,5 +8,6 @@ export type BusinessDetails = {
     rewardText: string;
     backgroundColor: string;
     textColor: string;
+    timeZone: string;
   };
   

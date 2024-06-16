@@ -324,7 +324,7 @@ return (
 
         
         
-        <div style={{ height: '15%' }} className="text-3xl py-2">
+        <div style={{ height: '15%' }} className="text-2xl py-2">
           {details.languages.map((lang) => {
           const translations = languageTranslations[lang];
           return translations ? (

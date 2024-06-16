@@ -9,17 +9,19 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    ) rgb(var(--background-start-rgb));
-  font-family: 'Poppins', sans-serif;
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      ) rgb(var(--background-start-rgb));
+  }
 }
 
-/* Force light mode styles */
+/* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   body {
     color: rgb(var(--foreground-rgb));
@@ -30,6 +32,7 @@ body {
       ) rgb(var(--background-start-rgb));
   }
 }
+
 
 @layer utilities {
   .text-balance {

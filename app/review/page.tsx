@@ -324,7 +324,7 @@ return (
 
         
         
-        <div style={{ height: '15%' }} className="text-2xl py-2">
+        <div style={{ height: '15%' }} className="text-xl py-2">
           {details.languages.map((lang) => {
           const translations = languageTranslations[lang];
           return translations ? (
@@ -336,7 +336,7 @@ return (
         </div >
         {details.reward && (
           <>
-            <div className='text-l py-2' style={{height: '5%'}}>
+            <div className='text-l py-2' style={{height: '10%'}}>
               {details.languages.map((lang) => {
                 const translations = languageTranslations[lang];
                 return translations ? (
@@ -346,7 +346,7 @@ return (
                 ) : null;
               })}
             </div>
-            <div className='w-full px-6' style={{ height: '5%'}}>
+            <div className='w-full px-6' style={{ height: '10%'}}>
             <input
               type="email"
               placeholder="Email"
@@ -357,7 +357,7 @@ return (
             </div>
           </>
         )}
-        <div className='flex items-end pb-6' style={{ height: '10%' }}>
+        <div className='flex items-end pb-6' style={{ height: '15%' }}>
         <div className="flex flex-col">
           {details.languages.map((lang) => {
             const translations = languageTranslations[lang];

@@ -2,6 +2,7 @@ import { BusinessDetails } from "@/types";
 
 export const businessDetails: { [key: string]: BusinessDetails } = {
   "PizzaPlace": {
+    fullName: "Picerijaaaa",
     activated: false,
     image: "/images/caribic-picerija.png",
     ownerEmails: ["owner@pizzaplace.com"],
@@ -14,6 +15,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "CoffeeShop": {
+    fullName: "Kafeterija",
     activated: true,
     image: "/images/caribic-picerija.png",
     ownerEmails: ["stefan.milosavljevic01@gmail.com", "milosavljevicstefan555@gmail.com"],
@@ -26,6 +28,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "Camelot": {
+    fullName: "Camelot",
     activated: true,
     image: "/images/camelot.png",
     ownerEmails: ["milosavljevicstefan555@gmail.com", "stefan.milosavljevic01@gmail.com"],
@@ -38,6 +41,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "test": {
+    fullName: "fullname",
     activated: false,
     image: "/images/camelot.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
@@ -50,6 +54,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "crveni-cot": {
+    fullName: "Crveni Cot",
     activated: true,
     image: "/images/crveni-cot.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
@@ -62,6 +67,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "hvmzm": {
+    fullName: "Hilfe von Mensch zu Mensch",
     activated: true,
     image: "/images/HVMZM LS.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
@@ -74,6 +80,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     timeZone: "Europe/Berlin"
   },
   "RAKITA": {
+    fullName: "Rakita",
     activated: true,
     image: "/images/RAKITA.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],

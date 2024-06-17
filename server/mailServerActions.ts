@@ -4,6 +4,7 @@
 import { sendMail } from '@/lib/mail';
 
 interface Translation {
+    reward?: string;
     subject?: string;
     time?: string;
     number?: string;
@@ -17,6 +18,7 @@ interface LanguageTranslations {
 
 const languageTranslations: LanguageTranslations = {
     'srb': {
+        reward: "Nagrada",
         subject: "Korisnik je preuzeo nagradu!",
         time: "vreme: ",
         number: "broj: ",
@@ -24,6 +26,7 @@ const languageTranslations: LanguageTranslations = {
         review: "recenzija"
     },
     'en': {
+        reward: "Reward",
         subject: "User has claimed the reward!",
         time: "time: ",
         number: "number: ",
@@ -31,6 +34,7 @@ const languageTranslations: LanguageTranslations = {
         review: "review"
     },
     'cro': {
+        reward: "Nagrada",
         subject: "Korisnik je preuzeo nagradu!",
         time: "vrijeme: ",
         number: "broj: ",
@@ -38,6 +42,7 @@ const languageTranslations: LanguageTranslations = {
         review: "recenzija"
     },
     'de': {
+        reward: "Belohnen",
         subject: "Der Benutzer hat die Belohnung erhalten!",
         time: "Zeit: ",
         number: "Nummer: ",
@@ -45,6 +50,7 @@ const languageTranslations: LanguageTranslations = {
         review: "Bewertung"
     },
     'es': {
+        reward: "Premio",
         subject: "¡El usuario ha reclamado la recompensa!",
         time: "tiempo: ",
         number: "número: ",
@@ -52,6 +58,7 @@ const languageTranslations: LanguageTranslations = {
         review: "reseña"
     },
     'ro': {
+        reward: "Răsplată",
         subject: "Utilizatorul a revendicat recompensa!",
         time: "timp: ",
         number: "număr: ",
@@ -59,6 +66,7 @@ const languageTranslations: LanguageTranslations = {
         review: "recenzie"
     },
     'gg': {
+        reward: "Răsplată",
         subject: "Korisnik je preuzeo nagradu!",
         time: "vreme: ",
         number: "broj: ",
@@ -68,14 +76,14 @@ const languageTranslations: LanguageTranslations = {
 };
 
 
-export async function sendPriceMail(to: string, businessName: string, rewardText: string) {
+export async function sendPriceMail(to: string, businessName: string, rewardText: string, languages: string[]) {
     await sendMail({
         to: to,
         name: "Ime? ?",
         subject: businessName,
         body: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-            <h2>${businessName}</h2>
+            <h2>${languageTranslations[languages[0]].reward} ${businessName}</h2>
             <p>${rewardText}</p>
         </div>
         `

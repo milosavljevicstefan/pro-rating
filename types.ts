@@ -1,4 +1,5 @@
 export type BusinessDetails = {
+    fullName: string;
     activated: boolean;
     image: string;
     ownerEmails: string[];

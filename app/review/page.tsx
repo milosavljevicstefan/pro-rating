@@ -44,6 +44,7 @@ const ReviewContent = () => {
   const [business, setBusiness] = useState<string | null>(businessName);
   const [number, setNumber] = useState<string | null>(searchParams.get('number'));
   const [details, setDetails] = useState<BusinessDetails>({
+    fullName: '',
     activated: true,
     image: '',
     ownerEmails: [],
@@ -226,7 +227,7 @@ const ReviewContent = () => {
           });
           return;
         }
-        sendPriceMail(email, business || '', details.rewardText);
+        sendPriceMail(email, details.fullName || '', details.rewardText, details.languages);
         const emailPromises = details.ownerEmails.map(ownerEmail => sendReportMail(ownerEmail , email, number || '', details.languages, details.timeZone));
         setLoading(true);
         Promise.all(emailPromises);
@@ -275,10 +276,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     theme: "colored",
     transition: Bounce,
     onClose: () => {
-      const businessNameParam = businessName ? encodeURIComponent(businessName) : '';
-      const numberParam = searchParams.get('number') ? encodeURIComponent(searchParams.get('number')!) : '';
-      const queryString = `?businessName=${businessNameParam}&number=${numberParam}`;
-      router.push(`/review${queryString}`);
+      setView('review')
     }
   });
 };

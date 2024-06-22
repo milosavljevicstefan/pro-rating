@@ -91,5 +91,17 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     backgroundColor: "#e4f4fe", // Silver
     textColor: "#000000",
     timeZone: "Europe/Berlin"
-  }
+  },
+  "Butcher's": {
+    fullName: "Butcher's",
+    activated: true,
+    image: "/images/Butcher.png",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJcWFv561tThMRlKW17QDBV3s",
+    languages: ["cro"],
+    reward: false,
+    rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
+    backgroundColor: "#e4f4fe", // Silver
+    textColor: "#000000",
+    timeZone: "Europe/Berlin"
 };

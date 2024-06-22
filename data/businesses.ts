@@ -69,7 +69,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
   "hvmzm": {
     fullName: "Hilfe von Mensch zu Mensch",
     activated: true,
-    image: "/images/HVMZM LS (500 x 150 px).png",
+    image: "/images/HVMZM LS.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
     languages: ["de"],

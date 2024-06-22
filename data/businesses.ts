@@ -92,8 +92,8 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#000000",
     timeZone: "Europe/Berlin"
   },
-  "Butcher's": {
-    fullName: "Butcher's",
+  "Butchers": {
+    fullName: "Butchers",
     activated: true,
     image: "/images/Butchers.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],

@@ -104,4 +104,5 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     backgroundColor: "#e4f4fe", // Silver
     textColor: "#000000",
     timeZone: "Europe/Berlin"
+    },
 };

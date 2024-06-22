@@ -121,7 +121,7 @@ const ReviewContent = () => {
         placeHolder: 'Enter your email...',
         bad: 'Bad',
         okay: 'Okay',
-        good: 'Good'
+        good: 'Super'
     },
     'cro': {
         yourOpinion: 'Vaše mišljenje nam je važno!',

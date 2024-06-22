@@ -101,8 +101,8 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     languages: ["cro"],
     reward: false,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
-    backgroundColor: "#e4f4fe", // Silver
-    textColor: "#000000",
+    backgroundColor: "#000000", // Silver
+    textColor: "#ffffff",
     timeZone: "Europe/Berlin"
     },
 };

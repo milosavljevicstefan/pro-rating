@@ -95,7 +95,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
   "Butchers": {
     fullName: "Butchers",
     activated: true,
-    image: "/images/Butchers.png",
+    image: "/images/Butchers FNR.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "samirmetovic5@icloud.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJcWFv561tThMRlKW17QDBV3s",
     languages: ["cro"],

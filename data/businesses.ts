@@ -83,7 +83,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     fullName: "Rakita",
     activated: true,
     image: "/images/RAKITA.png",
-    ownerEmails: ["darko.jocic.ns@gmail.com", "samirmetovic5@icloud.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],
+    ownerEmails: ["darko.jocic.ns@gmail.com", "samirmetovic5@icloud.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJcWFv561tThMRlKW17QDBV3s",
     languages: ["cro"],
     reward: false,
@@ -96,10 +96,23 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     fullName: "Butchers",
     activated: true,
     image: "/images/Butchers FNR.png",
-    ownerEmails: ["darko.jocic.ns@gmail.com", "samirmetovic5@icloud.com", "stefan.milosavljevic01@gmail.com", "novakovicdusan555@gmail.com" ],
+    ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJmVaww_WKSxMR4c_L0iy069E",
     languages: ["en"],
     reward: false,
+    rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
+    backgroundColor: "#000000", // Silver
+    textColor: "#ffffff",
+    timeZone: "Europe/Berlin"
+    },
+  "inbar": {
+    fullName: "inbar",
+    activated: true,
+    image: "/images/inbar.png",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJqe5qkx12nkcR8rE6mbfoJwE",
+    languages: ["de"],
+    reward: true,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#000000", // Silver
     textColor: "#ffffff",

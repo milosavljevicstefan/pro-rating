@@ -104,8 +104,8 @@ const ReviewContent = () => {
         errorLabel: 'Molimo unesite važeću email adresu.',
         placeHolder: 'Unesite vašu email adresu...',
         bad: 'Loše',
-        okay: 'U redu',
-        good: 'Dobro'
+        okay: 'Onako',
+        good: 'Super'
     },
     'en': {
         yourOpinion: 'Your opinion is important to us!',

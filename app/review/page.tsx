@@ -93,14 +93,14 @@ const ReviewContent = () => {
   const languageTranslations: LanguageTranslations = {
     'srb': {
         yourOpinion: 'Vaše mišljenje nam je važno!',
-        thankYou: 'Hvala vam što ste izdvojili vreme da podelite Vaše utiske sa nama.',
+        thankYou: 'Hvala Vam na poseti.',
         keyToService: 'Vaše mišljenje je ključno za stvaranje usluga prilagođenih vašim potrebama.',
         emailSuccess: 'Hvala Vam na povratnim informacijama! Vaše mišljenje je zabeleženo.',
         reviewPlaceHolder: 'Unesite svoju recenziju...',
         submit: 'Pošalji',
         thankYouVisit: 'Hvala Vam na poseti!',
         enterEmail: 'Upišite svoj mejl i osvojite nagradu.',
-        pleaseRate: 'Molimo Vas da nas ocenite i doprinesete da zajedno rastemo.',
+        pleaseRate: 'Molimo Vas odaberite smajli koji najbolje opisuje Vaše iskustvo sa nama.',
         errorLabel: 'Molimo unesite važeću email adresu.',
         placeHolder: 'Unesite vašu email adresu...',
         bad: 'Loše',

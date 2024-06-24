@@ -58,7 +58,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     activated: true,
     image: "/images/crveni-cot.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
-    googleLink: "https://search.google.com/local/writereview?placeid=ChIJmSXJPQ5wWkcRgBl2_qXGdpc",
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJrydxEJMFW0cRtNbQP8x6At0",
     languages: ["srb"],
     reward: false,
     rewardText: 'nagrada cot',

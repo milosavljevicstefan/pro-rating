@@ -97,9 +97,9 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     activated: true,
     image: "/images/Butchers FNR.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
-    googleLink: "https://search.google.com/local/writereview?placeid=ChIJX8h11wLZnUcRh9pnF-l4kUs",
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJmVaww_WKSxMR4c_L0iy069E",
     languages: ["en"],
-    reward: true,
+    reward: false,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#000000", // Silver
     textColor: "#ffffff",

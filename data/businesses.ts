@@ -99,7 +99,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJX8h11wLZnUcRh9pnF-l4kUs",
     languages: ["en"],
-    reward: false,
+    reward: true,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#000000", // Silver
     textColor: "#ffffff",

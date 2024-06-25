@@ -71,7 +71,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     activated: true,
     image: "/images/HVMZM LS.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "stefan.milosavljevic01@gmail.com"],
-    googleLink: "https://search.google.com/local/writereview?placeid=ChIJVRXIjNh3nkcRUqXPsNscmO0",
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJ70C2dvx1nkcRXAWfDRU_r3Q",
     languages: ["de"],
     reward: true,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',

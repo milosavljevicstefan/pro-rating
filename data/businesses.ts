@@ -74,7 +74,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJ70C2dvx1nkcRXAWfDRU_r3Q",
     languages: ["de"],
     reward: true,
-    rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
+    rewardText: 'Wenn Sie innerhalb des nächsten Monats einen neuen Teilnehmer zum nächsten Kurs bringen, erhalten Sie 50% Rabatt!',
     backgroundColor: "#FFFFFF", // Silver
     textColor: "#000000",
     timeZone: "Europe/Berlin"

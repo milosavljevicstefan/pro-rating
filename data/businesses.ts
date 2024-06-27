@@ -118,8 +118,6 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#ffffff",
     timeZone: "Europe/Berlin"
     },
-};
-
 "magaza": {
     fullName: "magaza",
     activated: true,
@@ -133,3 +131,4 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#000000",
     timeZone: "Europe/Berlin"
   },
+  };

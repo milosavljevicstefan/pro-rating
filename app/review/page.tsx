@@ -334,7 +334,7 @@ return (
         </div >
         {details.reward && (
           <>
-            <div className='text-l py-2' style={{height: '10%'}}>
+            <div className='text-l pt-2' style={{height: '7%'}}>
               {details.languages.map((lang) => {
                 const translations = languageTranslations[lang];
                 return translations ? (
@@ -355,7 +355,7 @@ return (
             </div>
           </>
         )}
-        <div className='flex items-end pb-6' style={{ height: '15%' }}>
+        <div className='flex items-end pb-6' style={{ height: '5%' }}>
         <div className="flex flex-col">
           {details.languages.map((lang) => {
             const translations = languageTranslations[lang];

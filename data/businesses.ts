@@ -121,7 +121,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
 "magaza": {
     fullName: "magaza",
     activated: true,
-    image: "",
+    image: "/images/Magaza FNR.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "kiubieryt@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJT4tm7S4QW0cRPtywUIbmQJA",
     languages: ["srb"],

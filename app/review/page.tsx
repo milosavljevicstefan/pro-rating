@@ -301,7 +301,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 return (
   <div 
-    className="flex flex-col justify-center items-center w-screen h-screen text-center font-poppins overflow-hidden" 
+    className="flex flex-col justify-start items-center w-screen h-screen text-center font-poppins overflow-hidden" 
     style={{ 
       backgroundColor: details.backgroundColor,
       color: details.textColor,
@@ -322,7 +322,7 @@ return (
     </div>
     {view === 'review' && (
       <>
-    <div className="w-full">
+    <div className="w-full pt-1">
       <img 
         src={details.image} 
         alt="Business" 

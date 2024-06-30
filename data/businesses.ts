@@ -123,13 +123,13 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     fullName: "magaza",
     activated: true,
     image: "/images/Magaza1.png",
-    ownerEmails: ["darko.jocic.ns@gmail.com", "kiubieryt@gmail.com", "novakovicdusan555@gmail.com" ],
-    googleLink: "https://search.google.com/local/writereview?placeid=ChIJT4tm7S4QW0cRPtywUIbmQJA",
+    ownerEmails: ["darko.jocic.ns@gmail.com", "novakovicdusan555@gmail.com" ],
+    googleLink: "https://search.google.com/local/writereview?placeid=ChIJqe5qkx12nkcR8rE6mbfoJwE",
     languages: ["srb1"],
-    reward: false,
+    reward: true,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
-    backgroundColor: "#e4f4fe", // Silver
-    textColor: "#000000",
+    backgroundColor: "#000000", // Silver
+    textColor: "#ffffff",
     timeZone: "Europe/Berlin"
-  }
+    },
   };

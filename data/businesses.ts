@@ -124,7 +124,7 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     image: "/images/Magaza1.png",
     ownerEmails: ["darko.jocic.ns@gmail.com", "kiubieryt@gmail.com", "novakovicdusan555@gmail.com" ],
     googleLink: "https://search.google.com/local/writereview?placeid=ChIJT4tm7S4QW0cRPtywUIbmQJA",
-    languages: ["srb"],
+    languages: ["srb1"],
     reward: false,
     rewardText: 'Ako u narednih mesec dana dovedete novog polaznika na sledeci kurs imate 50% popusta!',
     backgroundColor: "#e4f4fe", // Silver

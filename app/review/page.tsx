@@ -123,8 +123,8 @@ const ReviewContent = () => {
     bad: 'Лоше',
     okay: 'Онако',
     good: 'Супер'
-
     },
+    
     'en': {
         yourOpinion: 'Your opinion is important to us!',
         thankYou: 'Thank you for taking the time to share your impressions with us.',

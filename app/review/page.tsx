@@ -107,6 +107,24 @@ const ReviewContent = () => {
         okay: 'Onako',
         good: 'Super'
     },
+
+    'srb1': {
+    yourOpinion: 'Ваше мишљење нам је важно!',
+    thankYou: 'Хвала Вам на посети.',
+    keyToService: 'Ваше мишљење је кључно за стварање услуга прилагођених вашим потребама.',
+    emailSuccess: 'Хвала Вам на повратним информацијама! Ваше мишљење је забележено.',
+    reviewPlaceHolder: 'Унесите своју рецензију...',
+    submit: 'Пошаљи',
+    thankYouVisit: 'Хвала Вам на посети!',
+    enterEmail: 'Упишите свој мејл и освојите награду.',
+    pleaseRate: 'Молимо Вас одаберите смајли који најбоље описује Ваше искуство са нама.',
+    errorLabel: 'Молимо унесите важећу емаил адресу.',
+    placeHolder: 'Унесите вашу емаил адресу...',
+    bad: 'Лоше',
+    okay: 'Онако',
+    good: 'Супер'
+
+    },
     'en': {
         yourOpinion: 'Your opinion is important to us!',
         thankYou: 'Thank you for taking the time to share your impressions with us.',

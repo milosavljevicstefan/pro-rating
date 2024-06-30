@@ -72,6 +72,14 @@ const languageTranslations: LanguageTranslations = {
         number: "broj: ",
         text: " je preuzeo svoju nagradu!",
         review: "recenzija"
+    },
+    'srb1': {
+        reward: "Награда",
+        subject: "Корисник је преузео награду!",
+        time: "време: ",
+        number: "број: ",
+        text: " је преузео своју награду!",
+        review: "рецензија"
     }
 };
 

@@ -131,5 +131,5 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     backgroundColor: "#000000", // Silver
     textColor: "#ffffff",
     timeZone: "Europe/Berlin"
-    },
+    }
   };

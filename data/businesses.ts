@@ -118,7 +118,8 @@ export const businessDetails: { [key: string]: BusinessDetails } = {
     textColor: "#ffffff",
     timeZone: "Europe/Berlin"
     },
-"magaza": {
+
+  "magaza": {
     fullName: "magaza",
     activated: true,
     image: "/images/Magaza1.png",
